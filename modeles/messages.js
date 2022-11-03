@@ -22,7 +22,9 @@ module.exports.getMessagesById = (idMessage, callback) => {
 };
 
 module.exports.getMessagesByFilter = (filter, callback, limit) => {
-  Messages.find({ description: { $regex: filter } }, callback).limit(limit);
+  Messages.find({ description: { $regex: filter } }, callback)
+    .limit(limit)
+    .sort({ date: -1 });
 };
 
 module.exports.ajoutMessages = (mess, callback) => {
