@@ -1,0 +1,89 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background: linear-gradient(45deg, rgb(20, 58, 97), rgb(8, 80, 139));
+  min-height: 100vh;
+}
+h1 {
+  text-align: center;
+  color: white;
+}
+.frameContainer {
+  background-color: antiquewhite;
+  min-height: 300px;
+  padding: 100px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+.listePrincipale {
+  margin-bottom: 50px;
+  background-color: white;
+  box-shadow: 0 0 15px black;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.textPrincipale {
+  display: flex;
+  justify-content: space-between;
+}
+.maxWidth {
+  min-width: 250px;
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 20px;
+}
+.entete {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  margin-bottom: 20px;
+}
+.ajustementDiscussion {
+  position: relative;
+  left: 60px;
+}
+.ajustementAuteur {
+  position: relative;
+  left: -25px;
+}
+.ajustementRepondant {
+  position: relative;
+  left: -40px;
+}
+.ajustementNombre {
+  position: relative;
+  left: -160px;
+}
+.button {
+  position: relative;
+  top: -60px;
+}
+.frameset {
+  border: 1px solid;
+  min-height: 60px;
+  margin: 30px;
+  padding: 5px;
+}
+.frameset p:first-child {
+  display: inline-block;
+}
+.frameset p {
+  top: -30px;
+  position: relative;
+  background-color: antiquewhite;
+  margin-left: 10px;
+}
+.frameset span {
+  margin-right: 20px;
+}
+.laDate {
+  display: flex;
+  align-content: space-between;
+}
+.comments {
+  margin-top: 50px;
+}

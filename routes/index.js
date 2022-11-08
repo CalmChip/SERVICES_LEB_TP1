@@ -3,7 +3,7 @@ const router = express.Router();
 const Messages = require("../modeles/messages");
 
 router.get("/", (requete, reponse) => {
-  reponse.send("Utilisez /api/messages pour faire un GET des messages");
+  affichePageWeb("pageWeb.html", reponse);
 });
 
 router.get("/api/messages", (req, res) => {
@@ -53,5 +53,18 @@ router.put("/api/messages/:id", (req, res) => {
     res.json(msg);
   });
 });
+
+function affichePageWeb(filename, response) {
+  const fs = require("fs");
+  const path = require("path");
+  filename = path.join(__dirname, "..", "/", filename);
+  fs.readFile(filename, (err, data) => {
+    if (err) {
+      response.status(500).send("Erreur serveur web: " + err.code);
+    } else {
+      response.status(200).set({ "Content-type": "text/html" }).send(data);
+    }
+  });
+}
 
 module.exports = router;

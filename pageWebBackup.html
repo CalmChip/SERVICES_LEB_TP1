@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services Web TP1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+      body {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        background: linear-gradient(45deg, rgb(20, 58, 97), rgb(8, 80, 139));
+        min-height: 100vh;
+      }
+      h1 {
+        text-align: center;
+        color: white;
+      }
+      .frameContainer {
+        background-color: antiquewhite;
+        min-height: 300px;
+        padding: 100px;
+        margin-left: 40px;
+        margin-right: 40px;
+      }
+      .frameset {
+        border: 1px solid;
+        min-height: 60px;
+        margin: 30px;
+        padding: 5px;
+      }
+      .frameset p:first-child {
+        display: inline-block;
+      }
+      .frameset p {
+        top: -30px;
+        position: relative;
+        background-color: antiquewhite;
+        margin-left: 10px;
+      }
+      .frameset span {
+        margin-right: 20px;
+      }
+      .laDate {
+        display: flex;
+        align-content: space-between;
+      }
+      .comments {
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Canal de discussion du TP1</h1>
+    <div class="frameContainer">
+      <div id="resultat">Patientez je récupère les messages...</div>
+    </div>
+    <script>
+      fetch("http://127.0.0.1:8000/api/messages")
+        .then((res) => res.json())
+        .then((data) => {
+          affichageDesDonnees(data);
+        });
+      function affichageDesDonnees(data) {
+        let lesCommentaires = "";
+        let afficheComments = "";
+        for (i in data) {
+          lesCommentaires = data[i].commentaires;
+          console.log(lesCommentaires);
+          afficheComments +=
+            "<div class='frameset'><p>" +
+            "<span>" +
+            data[i].titre +
+            "</span>" +
+            data[i].auteur +
+            "</p>" +
+            "<div class='textInFrame'>" +
+            "Message: " +
+            data[i].description +
+            "<span class='laDate'> Date de création: " +
+            data[i].date +
+            "</span>";
+          for (y in data) {
+            if (lesCommentaires[y]) {
+              afficheComments +=
+                "<p class='comments'>" +
+                "Auteur: " +
+                JSON.stringify(lesCommentaires[y].auteur) +
+                "<br>Commentaire: " +
+                JSON.stringify(lesCommentaires[y].commentaire) +
+                "<br>Fait le: " +
+                JSON.stringify(lesCommentaires[y].date) +
+                "</p>";
+            }
+          }
+          afficheComments += "</div>" + "</div>";
+        }
+        $("#resultat").html(afficheComments);
+        $(".comments").hide();
+        $(".textInFrame").click(function () {
+          $(".comments").hide();
+          $(".comments").show(1000);
+        });
+      }
+    </script>
+  </body>
+</html>
