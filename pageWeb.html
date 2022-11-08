@@ -6,102 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Services Web TP1</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <style>
-      body {
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-        background: linear-gradient(45deg, rgb(20, 58, 97), rgb(8, 80, 139));
-        min-height: 100vh;
-      }
-      h1 {
-        text-align: center;
-        color: white;
-      }
-      .frameContainer {
-        background-color: antiquewhite;
-        min-height: 300px;
-        padding: 100px;
-        margin-left: 40px;
-        margin-right: 40px;
-      }
-      .listePrincipale {
-        margin-bottom: 50px;
-        background-color: white;
-        box-shadow: 0 0 15px black;
-        border-radius: 10px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        white-space: nowrap;
-        overflow: hidden;
-      }
-      .textPrincipale {
-        display: flex;
-        justify-content: space-between;
-      }
-      .maxWidth {
-        min-width: 250px;
-        max-width: 250px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        padding-left: 20px;
-      }
-      .entete {
-        display: flex;
-        justify-content: space-between;
-        border-bottom: 1px solid black;
-        margin-bottom: 20px;
-      }
-      .ajustementDiscussion {
-        position: relative;
-        left: 60px;
-      }
-      .ajustementAuteur {
-        position: relative;
-        left: -25px;
-      }
-      .ajustementRepondant {
-        position: relative;
-        left: -40px;
-      }
-      .ajustementNombre {
-        position: relative;
-        left: -160px;
-      }
-      .button {
-        position: relative;
-        top: -60px;
-      }
-      .frameset {
-        border: 1px solid;
-        min-height: 60px;
-        margin: 30px;
-        padding: 5px;
-      }
-      .frameset p:first-child {
-        display: inline-block;
-      }
-      .frameset p {
-        top: -30px;
-        position: relative;
-        background-color: antiquewhite;
-        margin-left: 10px;
-      }
-      .laDate {
-        display: flex;
-        align-content: space-between;
-      }
-      .comments {
-        margin-top: 50px;
-        margin-left: 40px;
-      }
-      .commentaireAffichage {
-        margin-left: 40px;
-        margin-bottom: 20px;
-      }
-      .textInFrame {
-        margin-left: 20px;
-      }
-    </style>
+    <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
     <h1>Canal de discussion du TP1</h1>
@@ -109,9 +14,9 @@
       <button type="button" class="button">Ajouter une Discussion</button>
       <div class="entete">
         <div class="ajustementDiscussion">Discussion:</div>
-        <div class="ajustementAuteur">Auteur:</div>
-        <div class="ajustementRepondant">Repondant:</div>
-        <div class="ajustementNombre">Nombre de reponse:</div>
+        <div class="ajustementAuteur">Lancée par:</div>
+        <div class="ajustementRepondant">Dernière réponse:</div>
+        <div class="ajustementNombre">Réponse:</div>
       </div>
       <div>
         <div id="resultat">Patientez je récupère les messages...</div>
@@ -147,7 +52,7 @@
             "</span><br>" +
             "<div style='margin-top: 20px'>" +
             data[i].description +
-            "</div>";
+            "</div></div>";
           for (y in lesCommentaires) {
             if (lesCommentaires[y]) {
               afficheComments +=

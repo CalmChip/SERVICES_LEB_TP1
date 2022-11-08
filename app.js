@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/", require("./routes/index"));
+app.use("/css", express.static("./style"));
 
 mongoose.connect(
   "mongodb+srv://CalmChip:QAZplm123098@usagers.cxlqpfn.mongodb.net/services_TP1"

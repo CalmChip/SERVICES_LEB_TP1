@@ -7,12 +7,17 @@ h1 {
   text-align: center;
   color: white;
 }
+fieldset {
+  border-color: blue;
+}
 .frameContainer {
   background-color: antiquewhite;
   min-height: 300px;
   padding: 100px;
   margin-left: 40px;
   margin-right: 40px;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .listePrincipale {
   margin-bottom: 50px;
@@ -43,27 +48,31 @@ h1 {
   margin-bottom: 20px;
 }
 .ajustementDiscussion {
+  font-weight: bolder;
   position: relative;
   left: 60px;
 }
 .ajustementAuteur {
+  font-weight: bolder;
   position: relative;
-  left: -25px;
+  left: -20px;
 }
 .ajustementRepondant {
+  font-weight: bolder;
   position: relative;
-  left: -40px;
+  left: -60px;
 }
 .ajustementNombre {
+  font-weight: bolder;
   position: relative;
-  left: -160px;
+  left: -200px;
 }
 .button {
   position: relative;
   top: -60px;
 }
 .frameset {
-  border: 1px solid;
+  border: 2px solid;
   min-height: 60px;
   margin: 30px;
   padding: 5px;
@@ -77,13 +86,14 @@ h1 {
   background-color: antiquewhite;
   margin-left: 10px;
 }
-.frameset span {
-  margin-right: 20px;
-}
-.laDate {
-  display: flex;
-  align-content: space-between;
-}
 .comments {
   margin-top: 50px;
+  margin-left: 40px;
+}
+.commentaireAffichage {
+  margin-left: 40px;
+  margin-bottom: 20px;
+}
+.textInFrame {
+  margin-left: 20px;
 }
