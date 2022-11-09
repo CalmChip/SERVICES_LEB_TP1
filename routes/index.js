@@ -2,10 +2,12 @@ const express = require("express");
 const router = express.Router();
 const Messages = require("../modeles/messages");
 
+// Route GET / qui apelle la function affichePageWeb
 router.get("/", (requete, reponse) => {
   affichePageWeb("pageWeb.html", reponse);
 });
 
+// Route GET API tout les messages, Limit a 250
 router.get("/api/messages", (req, res) => {
   Messages.getMessages((err, msg) => {
     if (err) throw err;
@@ -13,6 +15,7 @@ router.get("/api/messages", (req, res) => {
   }, 250);
 });
 
+// Route GET API message par ID
 router.get("/api/messages/:id", (req, res) => {
   Messages.getMessagesById(req.params.id, (err, msg) => {
     if (err) throw err;
@@ -20,6 +23,7 @@ router.get("/api/messages/:id", (req, res) => {
   });
 });
 
+// Route GET API messages recherche par texte dans la description, limit 250
 router.get("/api/messages/recherches/:texte", (req, res) => {
   Messages.getMessagesByFilter(
     req.params.texte,
@@ -31,6 +35,7 @@ router.get("/api/messages/recherches/:texte", (req, res) => {
   );
 });
 
+// Route API post new messages
 router.post("/api/messages", (req, res) => {
   let newMessage = req.body;
   Messages.ajoutMessages(newMessage, (err, msg) => {
@@ -39,6 +44,7 @@ router.post("/api/messages", (req, res) => {
   });
 });
 
+// Route API delete messages
 router.delete("/api/messages/:id", (req, res) => {
   Messages.deleteUnMessage(req.params.id, (err, msg) => {
     if (err) throw err;
@@ -46,6 +52,7 @@ router.delete("/api/messages/:id", (req, res) => {
   });
 });
 
+// Route API modification Messages
 router.put("/api/messages/:id", (req, res) => {
   let newMsg = req.body;
   Messages.modifierUnMessage(req.params.id, newMsg, (err, msg) => {
@@ -54,6 +61,7 @@ router.put("/api/messages/:id", (req, res) => {
   });
 });
 
+//Function qui permet d'afficher la pageWeb
 function affichePageWeb(filename, response) {
   const fs = require("fs");
   const path = require("path");

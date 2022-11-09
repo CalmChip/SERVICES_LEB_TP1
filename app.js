@@ -1,3 +1,4 @@
+// Librairy utilisé
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
@@ -6,9 +7,12 @@ const bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+// Designe les routes a utilisé
 app.use("/", require("./routes/index"));
+// Designe ou le css ce trouve
 app.use("/css", express.static("./style"));
 
+// Connection a la BD mongoDB
 mongoose.connect(
   "mongodb+srv://CalmChip:QAZplm123098@usagers.cxlqpfn.mongodb.net/services_TP1"
 );
